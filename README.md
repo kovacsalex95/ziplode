@@ -1,2 +1,2 @@
 # ziplode
-C++ archive handler GUI application
+C++ archive handler GTK4 GUI application
