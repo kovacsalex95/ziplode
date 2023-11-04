@@ -16,5 +16,8 @@ LINK_DIRECTORIES(${GTK_LIBRARY_DIRS})
 ADD_DEFINITIONS(${GTK_CFLAGS_OTHER})
 
 add_executable(ziplode main.cpp
-        main.h)
+        GUI/UIHandler.cpp
+        GUI/UIHandler.h
+        GUI/WindowMain.cpp
+        GUI/WindowMain.h)
 TARGET_LINK_LIBRARIES(ziplode ${GTK_LIBRARIES})
