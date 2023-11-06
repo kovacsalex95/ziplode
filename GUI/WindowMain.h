@@ -2,6 +2,7 @@
 #define ZIPLODE_WINDOWMAIN_H
 
 #include <gtk/gtk.h>
+#include "UIHandler.h"
 
 class WindowMain
 {
@@ -11,7 +12,9 @@ class WindowMain
 
     private:
         GtkApplication *app{};
-        static void print_hello(GtkWidget *widget, gpointer data);
+        static void button1Clicked();
+        static void button2Clicked();
+        static void button3Clicked();
 };
 
 
