@@ -19,5 +19,7 @@ add_executable(ziplode main.cpp
         GUI/UIHandler.cpp
         GUI/UIHandler.h
         GUI/WindowMain.cpp
-        GUI/WindowMain.h)
+        GUI/WindowMain.h
+        GUI/FileList.cpp
+        GUI/FileList.h)
 TARGET_LINK_LIBRARIES(ziplode ${GTK_LIBRARIES})

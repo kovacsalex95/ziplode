@@ -2,7 +2,11 @@
 #define ZIPLODE_WINDOWMAIN_H
 
 #include <gtk/gtk.h>
+#include <string>
 #include "UIHandler.h"
+#include "FileList.h"
+
+using namespace std;
 
 class WindowMain
 {
