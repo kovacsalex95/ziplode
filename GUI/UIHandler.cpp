@@ -17,7 +17,7 @@ void UIHandler::create_tab_page(GtkNotebook *notebook, char const *title)
     gtk_notebook_append_page(notebook, page, label);
 }
 
-GtkWidget* UIHandler::add_menu_item(GtkActionBar *action_bar, char const *label, MenuPosition position)
+GtkWidget* UIHandler::add_menu_item(GtkActionBar *action_bar, char const *label, void* on_click, MenuPosition position)
 {
     GtkWidget *button = gtk_button_new_with_label(label);
 
@@ -30,6 +30,10 @@ GtkWidget* UIHandler::add_menu_item(GtkActionBar *action_bar, char const *label,
         case MENU_POS_RIGHT:
             gtk_action_bar_pack_end(GTK_ACTION_BAR(action_bar), button);
             break;
+    }
+
+    if (on_click != nullptr) {
+        g_signal_connect(button, "clicked", G_CALLBACK (on_click), NULL);
     }
 
     return button;

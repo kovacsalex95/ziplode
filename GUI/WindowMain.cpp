@@ -22,12 +22,9 @@ void WindowMain::open(GtkApplication *app, gpointer user_data)
 
     GtkWidget *toolbar = gtk_action_bar_new();
     gtk_action_bar_set_revealed(GTK_ACTION_BAR(toolbar), true);
-    GtkWidget *menu1 = UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 1");
-    g_signal_connect(menu1, "clicked", G_CALLBACK (button1Clicked), NULL);
-    GtkWidget *menu2 = UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 2");
-    g_signal_connect(menu2, "clicked", G_CALLBACK (button2Clicked), NULL);
-    GtkWidget *menu3 = UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 3");
-    g_signal_connect(menu3, "clicked", G_CALLBACK (button3Clicked), NULL);
+    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 1", (void*)button1Clicked);
+    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 2", (void*)button2Clicked);
+    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 3", (void*)button3Clicked);
     gtk_box_append(GTK_BOX(window_container), toolbar);
 
     gtk_window_present(GTK_WINDOW (window));

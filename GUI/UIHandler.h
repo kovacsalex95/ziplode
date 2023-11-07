@@ -16,7 +16,7 @@ class UIHandler
         int status;
         UIHandler(int argc, char **argv);
         static void create_tab_page(GtkNotebook *notebook, char const *title);
-        static GtkWidget* add_menu_item(GtkActionBar *action_bar, char const *label, MenuPosition position = MENU_POS_LEFT);
+        static GtkWidget* add_menu_item(GtkActionBar *action_bar, char const *label, void* on_click = nullptr, MenuPosition position = MENU_POS_LEFT);
 };
 
 
