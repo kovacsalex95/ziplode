@@ -21,5 +21,9 @@ add_executable(ziplode main.cpp
         GUI/WindowMain.cpp
         GUI/WindowMain.h
         GUI/FileList.cpp
-        GUI/FileList.h)
+        GUI/FileList.h
+        GUI/TabView.cpp
+        GUI/TabView.h
+        GUI/TabViewTab.cpp
+        GUI/TabViewTab.h)
 TARGET_LINK_LIBRARIES(ziplode ${GTK_LIBRARIES})

@@ -14,18 +14,19 @@ void WindowMain::open(GtkApplication *app, gpointer user_data)
     GtkWidget *window_container = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_window_set_child(GTK_WINDOW (window), window_container);
 
-    GtkWidget *tab_view = gtk_notebook_new();
-    UIHandler::create_tab_page(GTK_NOTEBOOK(tab_view), "Page 1");
-    UIHandler::create_tab_page(GTK_NOTEBOOK(tab_view), "Page 2");
-    UIHandler::create_tab_page(GTK_NOTEBOOK(tab_view), "Page 3");
-    gtk_box_append(GTK_BOX(window_container), tab_view);
-
     GtkWidget *toolbar = gtk_action_bar_new();
     gtk_action_bar_set_revealed(GTK_ACTION_BAR(toolbar), true);
     UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 1", (void*)button1Clicked);
     UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 2", (void*)button2Clicked);
     UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 3", (void*)button3Clicked);
     gtk_box_append(GTK_BOX(window_container), toolbar);
+
+    TabView *tabview = new TabView();
+    tabview->add_tab("TabViewTab 1", gtk_label_new("Tab 1"));
+    tabview->add_tab("TabViewTab 2", gtk_label_new("Tab 2"));
+    tabview->add_tab("TabViewTab 3", gtk_label_new("Tab 3"));
+    gtk_box_append(GTK_BOX(window_container), tabview->get_widget());
+    tabview->set_tab_index(2);
 
     // Dummy lines
     FileList *file_list = new FileList();

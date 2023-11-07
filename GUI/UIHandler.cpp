@@ -1,14 +1,5 @@
 #include "UIHandler.h"
 
-UIHandler::UIHandler(int argc, char **argv)
-{
-    GtkApplication *app;
-    app = gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
-    WindowMain window_main = *new WindowMain(app);
-    status = g_application_run(G_APPLICATION (app), argc, argv);
-    g_object_unref(app);
-}
-
 void UIHandler::create_tab_page(GtkNotebook *notebook, char const *title)
 {
     GtkWidget *page = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
