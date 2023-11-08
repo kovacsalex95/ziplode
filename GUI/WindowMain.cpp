@@ -26,7 +26,7 @@ void WindowMain::open(GtkApplication *app, gpointer user_data)
     tabview->add_tab(new FileListTab("Files 2"));
     tabview->add_tab(new FileListTab("Files 3"));
     gtk_box_append(GTK_BOX(window_container), tabview->get_widget());
-    tabview->set_tab_index(2);
+    tabview->set_tab_index(0);
 
     gtk_window_present(GTK_WINDOW (window));
 }

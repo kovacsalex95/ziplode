@@ -2,6 +2,7 @@
 #define ZIPLODE_FILELIST_H
 
 #include <gtk/gtk.h>
+#include <cstdlib>
 #include <string>
 #include "UIHandler.h"
 
@@ -10,7 +11,7 @@ using namespace std;
 class FileList {
     public:
         void set_items_height(int items_height = 24);
-        void add_item(string label);
+        void add_item(string name, int size = 0);
         void add_dummies(int dummy_count = 100);
         GtkWidget* get_widget();
 
