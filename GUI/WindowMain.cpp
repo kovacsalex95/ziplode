@@ -22,24 +22,11 @@ void WindowMain::open(GtkApplication *app, gpointer user_data)
     gtk_box_append(GTK_BOX(window_container), toolbar);
 
     TabView *tabview = new TabView();
-    tabview->add_tab("TabViewTab 1", gtk_label_new("Tab 1"));
-    tabview->add_tab("TabViewTab 2", gtk_label_new("Tab 2"));
-    tabview->add_tab("TabViewTab 3", gtk_label_new("Tab 3"));
+    tabview->add_tab(new FileListTab("Files 1"));
+    tabview->add_tab(new FileListTab("Files 2"));
+    tabview->add_tab(new FileListTab("Files 3"));
     gtk_box_append(GTK_BOX(window_container), tabview->get_widget());
     tabview->set_tab_index(2);
-
-    // Dummy lines
-    FileList *file_list = new FileList();
-    file_list->set_items_height(24);
-
-    const int dummy_count = 100;
-    int dummies = dummy_count;
-
-    while (dummies --> 0) {
-        file_list->add_item("Dummy file #" + to_string(dummy_count - dummies));
-    }
-
-    gtk_box_append(GTK_BOX(window_container), file_list->get_widget());
 
     gtk_window_present(GTK_WINDOW (window));
 }

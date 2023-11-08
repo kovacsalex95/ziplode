@@ -5,6 +5,7 @@
 #include <string>
 #include "UIHandler.h"
 #include "FileList.h"
+#include "FileListTab.h"
 #include "TabView.h"
 
 using namespace std;

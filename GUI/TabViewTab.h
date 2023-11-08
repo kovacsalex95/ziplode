@@ -9,13 +9,16 @@ using namespace std;
 class TabViewTab {
     public:
         TabViewTab(string tab_name, GtkWidget* content = nullptr, bool selected = false);
-        void select();
+
+    TabViewTab();
+
+    void select();
         void unselect();
         bool is_selected();
         void set_selected(bool selected);
         void add_to_notebook(GtkNotebook* notebook);
 
-    private:
+    protected:
         bool selected = false;
         GtkWidget* label = nullptr;
         GtkWidget* content = nullptr;

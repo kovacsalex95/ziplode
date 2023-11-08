@@ -21,6 +21,15 @@ void FileList::add_item(string label)
     gtk_list_box_append(GTK_LIST_BOX(file_list), line_label);
 }
 
+void FileList::add_dummies(int dummy_count)
+{
+    int dummies = dummy_count;
+
+    while (dummies --> 0) {
+        add_item("Dummy file #" + to_string(dummy_count - dummies));
+    }
+}
+
 GtkWidget* FileList::get_widget()
 {
     return this->file_list_scroll;
