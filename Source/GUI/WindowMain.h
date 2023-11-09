@@ -2,11 +2,14 @@
 #define ZIPLODE_WINDOWMAIN_H
 
 #include <string>
+#include <format>
 #include <iostream>
 #include <wx/wx.h>
-#include "FileList.h"
-#include "FileListTab.h"
-#include "TabView.h"
+#include <fmt/core.h>
+#include <fmt/format.h>
+
+#include "../AppInfo.h"
+#include "Resources.h"
 
 using namespace std;
 
@@ -16,6 +19,7 @@ class WindowMain : public wxFrame
         WindowMain();
 
     private:
+        Resources *resources;
         void OnHello(wxCommandEvent& event);
         void OnExit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);

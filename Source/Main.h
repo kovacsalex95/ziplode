@@ -2,6 +2,7 @@
 #define ZIPLODE_MAIN_H
 
 #include <wx/wx.h>
+
 #include "GUI/WindowMain.h"
 
 class ZiplodeApp : public wxApp

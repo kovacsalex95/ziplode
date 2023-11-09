@@ -2,6 +2,8 @@
 
 WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, "Hello Ziplode", wxDefaultPosition, wxSize(1200, 900))
 {
+    this->resources = new Resources();
+
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(MAIN_MENU_IDS::MENU_HELLO, "&Hello...\tCtrl+H",
                      "Help string shown in status bar for this menu item");
@@ -18,11 +20,16 @@ WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, "Hello Ziplode", wxDefault
     this->SetMenuBar(menuBar);
 
     this->CreateStatusBar();
-    this->SetStatusText("Welcome to wxWidgets!");
+    this->SetStatusText("Welcome to Ziplode!");
 
     this->Bind(wxEVT_MENU, &WindowMain::OnHello, this, MAIN_MENU_IDS::MENU_HELLO);
     this->Bind(wxEVT_MENU, &WindowMain::OnAbout, this, wxID_ABOUT);
     this->Bind(wxEVT_MENU, &WindowMain::OnExit, this, wxID_EXIT);
+
+    wxToolBar *toolbar = CreateToolBar();
+    toolbar->AddTool(wxID_OPEN, "Open", resources->iconOpen(), resources->iconOpenDisabled());
+    toolbar->Realize();
+    this->SetToolBar(toolbar);
 }
 
 void WindowMain::OnExit(wxCommandEvent& event)
@@ -32,43 +39,14 @@ void WindowMain::OnExit(wxCommandEvent& event)
 
 void WindowMain::OnAbout(wxCommandEvent& event)
 {
-    wxMessageBox("This is a wxWidgets Hello World example",
-                 "About Hello World", wxOK | wxICON_INFORMATION);
+    wxMessageBox("C++ archive handler GUI application",
+                 "About " + AppInfo::appNameAndVersion(), wxOK | wxICON_INFORMATION);
 }
 
 void WindowMain::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
 }
-
-
-//void WindowMain::open()
-//{
-//    GtkWidget *window = gtk_application_window_new (app);
-//    gtk_window_set_title(GTK_WINDOW (window), "Ziplode");
-//    gtk_window_set_default_size(GTK_WINDOW (window), 1000, 600);
-//
-//    GtkWidget *window_container = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-//    gtk_window_set_child(GTK_WINDOW (window), window_container);
-//
-//    GtkWidget *toolbar = gtk_action_bar_new();
-//    gtk_action_bar_set_revealed(GTK_ACTION_BAR(toolbar), true);
-//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 1", (void*)button1Clicked);
-//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 2", (void*)button2Clicked);
-//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 3", (void*)button3Clicked);
-//    gtk_box_append(GTK_BOX(window_container), toolbar);
-//
-//    TabView *tabview = new TabView();
-//    tabview->add_tab(new FileListTab("Files 1"));
-//    tabview->add_tab(new FileListTab("Files 2"));
-//    tabview->add_tab(new FileListTab("Files 3"));
-//    gtk_box_append(GTK_BOX(window_container), tabview->get_widget());
-//    tabview->set_tab_index(0);
-//
-//    gtk_window_present(GTK_WINDOW (window));
-
-    // TODO
-//}
 
 void WindowMain::button1Clicked()
 {
@@ -84,3 +62,20 @@ void WindowMain::button3Clicked()
 {
     cout << "Button 3 clicked\n";
 }
+
+//void WindowMain::open()
+//{
+//    GtkWidget *toolbar = gtk_action_bar_new();
+//    gtk_action_bar_set_revealed(GTK_ACTION_BAR(toolbar), true);
+//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 1", (void*)button1Clicked);
+//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 2", (void*)button2Clicked);
+//    UIHandler::add_menu_item(GTK_ACTION_BAR(toolbar), "Menu 3", (void*)button3Clicked);
+//    gtk_box_append(GTK_BOX(window_container), toolbar);
+//
+//    TabView *tabview = new TabView();
+//    tabview->add_tab(new FileListTab("Files 1"));
+//    tabview->add_tab(new FileListTab("Files 2"));
+//    tabview->add_tab(new FileListTab("Files 3"));
+//    gtk_box_append(GTK_BOX(window_container), tabview->get_widget());
+//    tabview->set_tab_index(0);
+//}
