@@ -1,2 +1,2 @@
 # ziplode
-C++ archive handler GTK4 GUI application
+C++ archive handler `wxWidgets` GUI application
