@@ -1,6 +1,6 @@
 #include "WindowMain.h"
 
-WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, "Hello Ziplode")
+WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, "Hello Ziplode", wxDefaultPosition, wxSize(1200, 900))
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(MAIN_MENU_IDS::MENU_HELLO, "&Hello...\tCtrl+H",
