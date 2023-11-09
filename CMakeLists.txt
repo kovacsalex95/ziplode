@@ -18,6 +18,7 @@ add_executable(ziplode main.cpp
         GUI/TabViewTab.cpp
         GUI/TabViewTab.h
         GUI/FileListTab.cpp
-        GUI/FileListTab.h)
+        GUI/FileListTab.h
+        main.h)
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})

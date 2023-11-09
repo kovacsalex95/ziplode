@@ -1,7 +1,10 @@
-#include "GUI/WindowMain.h"
+#include "main.h"
 
-int main (int argc, char **argv)
+bool ZiplodeApp::OnInit()
 {
-    WindowMain window_main = *new WindowMain(); // TODO
-    return 0;
+    WindowMain *frame = new WindowMain();
+    frame->Show();
+    return true;
 }
+
+wxIMPLEMENT_APP(ZiplodeApp);
