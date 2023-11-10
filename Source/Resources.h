@@ -5,10 +5,13 @@
 #ifndef ZIPLODE_RESOURCES_H
 #define ZIPLODE_RESOURCES_H
 
+#include <map>
 #include <wx/wx.h>
 #include <wx/stdpaths.h>
 #include <wx/image.h>
 #include <wx/filename.h>
+
+#include "AppInfo.h"
 
 using namespace std;
 
@@ -16,9 +19,10 @@ class Resources {
     public:
         Resources();
         wxBitmapBundle iconOpen();
-        wxBitmapBundle iconOpenDisabled();
+        wxBitmapBundle iconArchive();
 
     private:
+        map<wxString, wxBitmapBundle> generatedBitmapBundles;
         wxBitmapBundle generateBitmap(const wxString& bitmapName);
 };
 

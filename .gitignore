@@ -37,3 +37,6 @@ cmake-build-release/
 
 # CLion
 .idea/
+
+# MacOS
+.DS_Store

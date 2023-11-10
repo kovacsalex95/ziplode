@@ -4,6 +4,7 @@
 #include <string>
 #include <fmt/core.h>
 #include <fmt/format.h>
+#include <wx/settings.h>
 
 using namespace std;
 
@@ -13,4 +14,5 @@ class AppInfo
         static string appName();
         static string appVersion();
         static string appNameAndVersion();
+        static bool appInDarkMode();
 };

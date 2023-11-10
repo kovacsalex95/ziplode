@@ -14,5 +14,10 @@ string AppInfo::appVersion()
 
 string AppInfo::appNameAndVersion()
 {
-    return fmt::format("{} (v{})", appName(), appVersion());
+    return fmt::format("{} v{}", appName(), appVersion());
+}
+
+bool AppInfo::appInDarkMode()
+{
+    return wxSystemSettings::GetAppearance().IsDark();
 }
