@@ -12,6 +12,7 @@
 #include "MenuBar.h"
 #include "ToolBar.h"
 #include "StatusBar.h"
+#include "FileList.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ class WindowMain : public wxFrame
         ToolBar *toolBar;
         StatusBar *statusBar;
         Resources *resources;
+        FileList *fileList;
         void onOpen(wxCommandEvent& event);
         void onArchive(wxCommandEvent& event);
         void onExit(wxCommandEvent& event);

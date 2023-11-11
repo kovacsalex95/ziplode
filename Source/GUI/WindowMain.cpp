@@ -7,6 +7,7 @@ WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion
     menuBar = new MenuBar(this);
     toolBar = new ToolBar(this, resources);
     statusBar = new StatusBar(this);
+    fileList = new FileList(this);
 
     this->SetStatusText("Welcome to Ziplode!");
 

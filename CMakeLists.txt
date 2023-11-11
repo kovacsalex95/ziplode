@@ -26,7 +26,9 @@ add_executable(ziplode Source/Main.cpp
         Source/GUI/ToolBar.h
         Source/ActionIDs.h
         Source/GUI/StatusBar.cpp
-        Source/GUI/StatusBar.h)
+        Source/GUI/StatusBar.h
+        Source/GUI/FileList.cpp
+        Source/GUI/FileList.h)
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})
 target_link_libraries(ziplode fmt::fmt)
