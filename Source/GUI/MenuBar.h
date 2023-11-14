@@ -3,9 +3,9 @@
 
 #include <wx/wx.h>
 
-#include "../ActionIDs.h"
+#include "../Core/ActionIDs.h"
 
-using namespace std;
+using std::string;
 
 class MenuBar {
     public:

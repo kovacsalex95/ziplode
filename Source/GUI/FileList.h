@@ -8,20 +8,24 @@
 #include <string>
 #include <wx/wx.h>
 #include <wx/dataview.h>
+#include <wx/stdpaths.h>
 #include <fmt/core.h>
 #include <fmt/format.h>
 
-using namespace std;
+#include "../Core/FileSystemDirectoryContent.h"
+
+using std::string;
 
 class FileList {
     public:
         FileList(wxFrame* frame);
-        void addFile(string name, int size, string lastModified);
+        void addFile(string name, string size, string lastModified);
         wxDataViewListCtrl* getControl();
 
     private:
         void generateDummies(int dummies = 100);
         wxDataViewListCtrl *wxControl;
+        DirectoryContent *content;
 };
 
 

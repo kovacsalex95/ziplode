@@ -3,10 +3,10 @@
 
 #include <wx/wx.h>
 
-#include "../Resources.h"
-#include "../ActionIDs.h"
+#include "../Core/Resources.h"
+#include "../Core/ActionIDs.h"
 
-using namespace std;
+using std::string;
 
 class ToolBar {
     public:

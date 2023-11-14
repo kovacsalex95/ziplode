@@ -6,7 +6,7 @@
 #include <fmt/format.h>
 #include <wx/settings.h>
 
-using namespace std;
+using std::string;
 
 class AppInfo
 {

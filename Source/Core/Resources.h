@@ -11,9 +11,10 @@
 #include <wx/image.h>
 #include <wx/filename.h>
 
-#include "AppInfo.h"
+#include "../AppInfo.h"
 
-using namespace std;
+using std::string;
+using std::map;
 
 class Resources {
     public:

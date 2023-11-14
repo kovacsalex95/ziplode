@@ -4,7 +4,7 @@
 #include <string>
 #include <wx/wx.h>
 
-using namespace std;
+using std::string;
 
 class StatusBar {
     public:

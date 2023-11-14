@@ -18,17 +18,24 @@ add_executable(ziplode Source/Main.cpp
         Source/Main.h
         Source/AppInfo.h
         Source/AppInfo.cpp
-        Source/Resources.cpp
-        Source/Resources.h
+        Source/Core/Resources.cpp
+        Source/Core/Resources.h
         Source/GUI/MenuBar.cpp
         Source/GUI/MenuBar.h
         Source/GUI/ToolBar.cpp
         Source/GUI/ToolBar.h
-        Source/ActionIDs.h
+        Source/Core/ActionIDs.h
         Source/GUI/StatusBar.cpp
         Source/GUI/StatusBar.h
         Source/GUI/FileList.cpp
-        Source/GUI/FileList.h)
+        Source/GUI/FileList.h
+        Source/Core/DirectoryContent.cpp
+        Source/Core/DirectoryContent.h
+        Source/Core/DirectoryItem.cpp
+        Source/Core/DirectoryItem.h
+        Source/Core/FileSystemDirectoryContent.cpp
+        Source/Core/FileSystemDirectoryContent.h
+)
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})
 target_link_libraries(ziplode fmt::fmt)

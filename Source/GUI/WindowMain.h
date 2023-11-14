@@ -8,13 +8,13 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 
-#include "../Resources.h"
+#include "../Core/Resources.h"
 #include "MenuBar.h"
 #include "ToolBar.h"
 #include "StatusBar.h"
 #include "FileList.h"
 
-using namespace std;
+using std::string;
 
 class WindowMain : public wxFrame
 {
