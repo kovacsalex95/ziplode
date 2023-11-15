@@ -10,6 +10,7 @@ WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion
     fileList = new FileList(this);
 
     this->SetStatusText("Welcome to Ziplode!");
+    fileList->loadPath(this->getDefaultPath());
 
     this->Bind(wxEVT_MENU, &WindowMain::onOpen, this, ZL_ACTION_OPEN);
     this->Bind(wxEVT_MENU, &WindowMain::onArchive, this, ZL_ACTION_ARCHIVE);

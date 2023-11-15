@@ -10,6 +10,9 @@ void FileSystemDirectoryContent::load(char const* path)
         std::cout << "Directory is empty" << std::endl;
         return;
     }
+
+    this->clearItems();
+
     while ((entry = readdir(dir)) != NULL) {
         DirectoryItem* directoryItem = this->generateDirectoryItem(path, entry->d_name);
         this->addItem(directoryItem);

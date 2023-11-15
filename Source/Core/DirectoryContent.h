@@ -23,6 +23,7 @@ class DirectoryContent {
         DirectoryItem* getItem(int index);
         void addItem(DirectoryItem* item);
         void removeItem(int index);
+        void clearItems();
         void sortItems();
 
     private:

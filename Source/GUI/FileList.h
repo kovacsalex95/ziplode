@@ -19,13 +19,15 @@ using std::string;
 class FileList {
     public:
         FileList(wxFrame* frame);
-        void addFile(string name, string size, string lastModified);
+        void loadPath(string path);
         wxDataViewListCtrl* getControl();
 
     private:
-        void generateDummies(int dummies = 100);
+        string currentPath;
         wxDataViewListCtrl *wxControl;
         DirectoryContent *content;
+        void addFile(string name, string size, string lastModified);
+        void onItemDoubleClicked(wxDataViewEvent& event);
 };
 
 

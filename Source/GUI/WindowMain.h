@@ -32,6 +32,7 @@ class WindowMain : public wxFrame
         void onExit(wxCommandEvent& event);
         void onAbout(wxCommandEvent& event);
         void onSystemColourChanged(wxSysColourChangedEvent &event);
+        string getDefaultPath() const { return wxStandardPaths::Get().GetDocumentsDir().ToStdString(); }
 };
 
 #endif //ZIPLODE_WINDOWMAIN_H

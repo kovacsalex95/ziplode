@@ -25,6 +25,10 @@ DirectoryItem* DirectoryContent::getItem(int index)
 
 void DirectoryContent::addItem(DirectoryItem* item)
 {
+    if (item->getType() == ZL_ITEM_TYPE_FOLDER && item->getName() == "./") {
+        return;
+    }
+
     this->items.push_back(item);
 }
 
@@ -35,6 +39,11 @@ void DirectoryContent::removeItem(int index)
     }
 
     this->items.erase(this->items.begin() + index);
+}
+
+void DirectoryContent::clearItems()
+{
+    this->items.clear();
 }
 
 bool compareItems(DirectoryItem* i1, DirectoryItem* i2)
