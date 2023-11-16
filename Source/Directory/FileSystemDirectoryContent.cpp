@@ -49,6 +49,7 @@ DirectoryItem* FileSystemDirectoryContent::generateDirectoryItem(char const* pat
     // TODO: created at(?)
     struct tm modifiedAt = *localtime(&fileInfo.st_mtime);
 
+    // TODO: extensions
     DirectoryItem* item = new DirectoryItem(filename + filenameSuffix, "", path, itemType, itemSize, modifiedAt);
     return item;
 }
