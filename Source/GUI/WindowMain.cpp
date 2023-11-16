@@ -7,7 +7,7 @@ WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, 
     statusBar = new StatusBar(this);
     fileList = new FileList(this->stateManager, this);
 
-    this->SetStatusText("Welcome to Ziplode!");
+    this->SetStatusText(this->stateManager->getPathManager()->getCurrentPath());
 
     this->Bind(wxEVT_MENU, &WindowMain::onOpen, this, ZL_ACTION_OPEN);
     this->Bind(wxEVT_MENU, &WindowMain::onArchive, this, ZL_ACTION_ARCHIVE);
@@ -22,7 +22,11 @@ WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, 
 
 void WindowMain::onSignalReceived(int signalID, Signal *signal)
 {
-
+    switch (signalID) {
+        case ZL_EVENT_PATH_CHANGED:
+            this->SetStatusText(((PathChangedSignal*)signal)->getPath());
+            break;
+    }
 }
 
 void WindowMain::onOpen(wxCommandEvent& event)

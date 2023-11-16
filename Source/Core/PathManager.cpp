@@ -48,7 +48,7 @@ string PathManager::goToPath(string path)
 
     this->setPath(path);
     this->forwardPaths.clear();
-    this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
+    this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED, new PathChangedSignal(this->getCurrentPath()));
 
     return this->getCurrentPath();
 }
@@ -76,7 +76,7 @@ string PathManager::goBack()
         this->forwardPaths.insert(this->forwardPaths.begin(), this->getCurrentPath());
         this->setPath(this->backPaths[this->backPaths.size() - 1]);
         this->backPaths.pop_back();
-        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
+        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED, new PathChangedSignal(this->getCurrentPath()));
     }
 
     return this->getCurrentPath();
@@ -88,7 +88,7 @@ string PathManager::goForward()
         this->backPaths.push_back(this->getCurrentPath());
         this->setPath(this->forwardPaths[0]);
         this->forwardPaths.erase(this->forwardPaths.begin());
-        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
+        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED, new PathChangedSignal(this->getCurrentPath()));
     }
 
     return this->getCurrentPath();

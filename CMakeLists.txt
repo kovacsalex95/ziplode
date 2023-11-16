@@ -47,6 +47,8 @@ add_executable(ziplode Source/Main.cpp
         Source/Core/SignalManager.h
         Source/Core/StateUser.cpp
         Source/Core/StateUser.h
+        Source/Core/PathChangedSignal.cpp
+        Source/Core/PathChangedSignal.h
 )
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})

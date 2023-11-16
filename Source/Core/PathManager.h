@@ -8,7 +8,7 @@
 #include <wx/stdpaths.h>
 
 #include "SignalManager.h"
-#include "Signal.h"
+#include "PathChangedSignal.h"
 #include "Util.h"
 #include "ActionIDs.h"
 
