@@ -3,6 +3,7 @@
 void FileSystemDirectoryContent::load(char const* path)
 {
     std::cout << "Reading directory: " << path << std::endl;
+    this->path = path;
 
     struct dirent *entry;
     DIR *dir = opendir(path);
@@ -15,7 +16,10 @@ void FileSystemDirectoryContent::load(char const* path)
 
     while ((entry = readdir(dir)) != NULL) {
         DirectoryItem* directoryItem = this->generateDirectoryItem(path, entry->d_name);
-        this->addItem(directoryItem);
+
+        if (directoryItem != nullptr) {
+            this->addItem(directoryItem);
+        }
     }
 
     closedir(dir);

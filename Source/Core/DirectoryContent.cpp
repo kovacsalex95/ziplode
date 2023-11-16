@@ -25,8 +25,13 @@ DirectoryItem* DirectoryContent::getItem(int index)
 
 void DirectoryContent::addItem(DirectoryItem* item)
 {
-    if (item->getType() == ZL_ITEM_TYPE_FOLDER && item->getName() == "./") {
-        return;
+    if (item->getType() == ZL_ITEM_TYPE_FOLDER) {
+        if (item->getName() == "./") {
+            return;
+        }
+        if (item->getName() == "../" && this->path == "/") {
+            return;
+        }
     }
 
     this->items.push_back(item);

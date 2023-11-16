@@ -55,11 +55,14 @@ void FileList::onItemDoubleClicked(wxDataViewEvent& event)
     itemData->GetValue(filenameVariant, event.GetItem(), 0);
     wxString filename = filenameVariant.GetString();
 
-    // Folder
-    // TODO: Clear out "../"-s from the path
+    // Folders
     if (filename.EndsWith("/")) {
         filename = filename.SubString(0, filename.length() - 1);
-        this->loadPath(fmt::format("{}/{}", this->currentPath, filename.ToStdString()));
+
+        string newPath = fmt::format("{}/{}", this->currentPath, filename.ToStdString());
+        newPath = Util::normalizePath(newPath);
+
+        this->loadPath(newPath);
     }
 
     // File

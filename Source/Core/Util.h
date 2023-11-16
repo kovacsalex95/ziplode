@@ -10,6 +10,9 @@ using std::string;
 
 class Util
 {
+    public:
+        static string normalizePath(const string& path);
+        static string getFormattedFilesize(long long filesize, int decimals = 3);
 };
 
 
