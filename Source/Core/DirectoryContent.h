@@ -25,9 +25,9 @@ class DirectoryContent {
         void removeItem(int index);
         void clearItems();
         void sortItems();
+        string path = "";
 
     private:
-        string path = "";
         vector<DirectoryItem*> items;
         //bool compareItems(DirectoryItem i1, DirectoryItem i2);
 };
