@@ -1,5 +1,4 @@
 #include "Main.h"
-#include "Core/StateManager.h"
 
 bool ZiplodeApp::OnInit()
 {

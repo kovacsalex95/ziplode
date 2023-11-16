@@ -8,9 +8,9 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 
-#include "../Core/StateManager.h"
-#include "../Core/StateUser.h"
-#include "../Core/ResourceManager.h"
+#include "../State/StateManager.h"
+#include "../State/StateUser.h"
+#include "../Resource/ResourceManager.h"
 #include "MenuBar.h"
 #include "ToolBar.h"
 #include "StatusBar.h"

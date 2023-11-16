@@ -11,7 +11,7 @@
 #include <wx/image.h>
 #include <wx/filename.h>
 
-#include "../AppInfo.h"
+#include "../Util/AppInfo.h"
 
 using std::string;
 using std::map;

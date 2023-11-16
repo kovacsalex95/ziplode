@@ -16,39 +16,39 @@ add_executable(ziplode Source/Main.cpp
         Source/GUI/WindowMain.cpp
         Source/GUI/WindowMain.h
         Source/Main.h
-        Source/AppInfo.h
-        Source/AppInfo.cpp
-        Source/Core/ResourceManager.cpp
-        Source/Core/ResourceManager.h
+        Source/Util/AppInfo.h
+        Source/Util/AppInfo.cpp
+        Source/Resource/ResourceManager.cpp
+        Source/Resource/ResourceManager.h
         Source/GUI/MenuBar.cpp
         Source/GUI/MenuBar.h
         Source/GUI/ToolBar.cpp
         Source/GUI/ToolBar.h
-        Source/Core/ActionIDs.h
+        Source/Enum/ActionIDs.h
         Source/GUI/StatusBar.cpp
         Source/GUI/StatusBar.h
         Source/GUI/FileList.cpp
         Source/GUI/FileList.h
-        Source/Core/DirectoryContent.cpp
-        Source/Core/DirectoryContent.h
-        Source/Core/DirectoryItem.cpp
-        Source/Core/DirectoryItem.h
-        Source/Core/FileSystemDirectoryContent.cpp
-        Source/Core/FileSystemDirectoryContent.h
-        Source/Core/Util.cpp
-        Source/Core/Util.h
-        Source/Core/PathManager.cpp
-        Source/Core/PathManager.h
-        Source/Core/StateManager.cpp
-        Source/Core/StateManager.h
-        Source/Core/SignalReceiver.h
-        Source/Core/Signal.h
-        Source/Core/SignalManager.cpp
-        Source/Core/SignalManager.h
-        Source/Core/StateUser.cpp
-        Source/Core/StateUser.h
-        Source/Core/PathChangedSignal.cpp
-        Source/Core/PathChangedSignal.h
+        Source/Directory/DirectoryContent.cpp
+        Source/Directory/DirectoryContent.h
+        Source/Directory/DirectoryItem.cpp
+        Source/Directory/DirectoryItem.h
+        Source/Directory/FileSystemDirectoryContent.cpp
+        Source/Directory/FileSystemDirectoryContent.h
+        Source/Util/Util.cpp
+        Source/Util/Util.h
+        Source/Path/PathManager.cpp
+        Source/Path/PathManager.h
+        Source/State/StateManager.cpp
+        Source/State/StateManager.h
+        Source/Signal/SignalReceiver.h
+        Source/Signal/Signal.h
+        Source/Signal/SignalManager.cpp
+        Source/Signal/SignalManager.h
+        Source/State/StateUser.cpp
+        Source/State/StateUser.h
+        Source/Path/PathChangedSignal.cpp
+        Source/Path/PathChangedSignal.h
 )
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})

@@ -3,9 +3,9 @@
 
 #include <wx/wx.h>
 
-#include "../Core/ActionIDs.h"
-#include "../Core/StateUser.h"
-#include "../Core/StateManager.h"
+#include "../Enum/ActionIDs.h"
+#include "../State/StateUser.h"
+#include "../State/StateManager.h"
 
 using std::string;
 

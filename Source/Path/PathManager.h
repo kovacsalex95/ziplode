@@ -7,10 +7,10 @@
 #include <wx/wx.h>
 #include <wx/stdpaths.h>
 
-#include "SignalManager.h"
+#include "../Signal/SignalManager.h"
 #include "PathChangedSignal.h"
-#include "Util.h"
-#include "ActionIDs.h"
+#include "../Util/Util.h"
+#include "../Enum/ActionIDs.h"
 
 using std::string;
 using std::vector;

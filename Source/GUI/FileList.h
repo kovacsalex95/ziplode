@@ -12,10 +12,10 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 
-#include "../Core/FileSystemDirectoryContent.h"
-#include "../Core/Util.h"
-#include "../Core/StateUser.h"
-#include "../Core/StateManager.h"
+#include "../Directory/FileSystemDirectoryContent.h"
+#include "../Util/Util.h"
+#include "../State/StateUser.h"
+#include "../State/StateManager.h"
 
 using std::string;
 using std::round;

@@ -3,7 +3,7 @@
 
 #include <wx/wx.h>
 
-#include "../Core/ActionIDs.h"
+#include "../Enum/ActionIDs.h"
 
 using std::string;
 

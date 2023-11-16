@@ -7,7 +7,7 @@
 #include <algorithm>
 
 #include "DirectoryItem.h"
-#include "StateManager.h"
+#include "../State/StateManager.h"
 
 using std::string;
 using std::vector;

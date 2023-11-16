@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 
+#include "State/StateManager.h"
 #include "GUI/WindowMain.h"
 
 class ZiplodeApp : public wxApp

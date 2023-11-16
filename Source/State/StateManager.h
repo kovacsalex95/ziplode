@@ -1,9 +1,9 @@
 #ifndef ZIPLODE_STATEMANAGER_H
 #define ZIPLODE_STATEMANAGER_H
 
-#include "PathManager.h"
-#include "SignalManager.h"
-#include "ResourceManager.h"
+#include "../Path/PathManager.h"
+#include "../Signal/SignalManager.h"
+#include "../Resource/ResourceManager.h"
 
 class StateManager {
 public:

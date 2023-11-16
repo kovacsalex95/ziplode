@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Signal.h"
+#include "../Signal/Signal.h"
 
 using std::string;
 
