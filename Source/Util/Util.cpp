@@ -40,7 +40,7 @@ string Util::stringPad(string str, int width, HorizontalDirection direction, cha
     int characters = width - (int)str.length();
     string padString;
 
-    for (int i=0; i<characters; i++) {
+    for (int i = 0; i < characters; i++) {
         padString += padChar;
     }
 
