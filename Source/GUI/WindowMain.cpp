@@ -1,13 +1,9 @@
 #include "WindowMain.h"
 
-WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion(), wxDefaultPosition, wxSize(1200, 800))
+WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion(), wxDefaultPosition, wxSize(1200, 800)), StateUser(stateManager)
 {
-    this->stateManager = stateManager;
-
-    this->resources = new Resources();
-
     menuBar = new MenuBar(this);
-    toolBar = new ToolBar(this->stateManager, this, resources);
+    toolBar = new ToolBar(this->stateManager, this);
     statusBar = new StatusBar(this);
     fileList = new FileList(this->stateManager, this);
 
@@ -24,6 +20,11 @@ WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, 
     this->Bind(wxEVT_SYS_COLOUR_CHANGED, wxSysColourChangedEventHandler(WindowMain::onSystemColourChanged), this);
 }
 
+void WindowMain::onSignalReceived(int signalID, Signal *signal)
+{
+
+}
+
 void WindowMain::onOpen(wxCommandEvent& event)
 {
     wxLogMessage("Open file...");
@@ -37,25 +38,21 @@ void WindowMain::onArchive(wxCommandEvent& event)
 void WindowMain::onHome(wxCommandEvent& event)
 {
     this->stateManager->getPathManager()->goToHome();
-    fileList->loadPath();
 }
 
 void WindowMain::onBack(wxCommandEvent& event)
 {
     this->stateManager->getPathManager()->goBack();
-    fileList->loadPath();
 }
 
 void WindowMain::onForward(wxCommandEvent& event)
 {
     this->stateManager->getPathManager()->goForward();
-    fileList->loadPath();
 }
 
 void WindowMain::onUp(wxCommandEvent& event)
 {
     this->stateManager->getPathManager()->goUp();
-    fileList->loadPath();
 }
 
 void WindowMain::onAbout(wxCommandEvent& event)

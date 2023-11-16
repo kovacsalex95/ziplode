@@ -23,6 +23,8 @@ void FileSystemDirectoryContent::load()
     closedir(dir);
 
     this->sortItems();
+
+    this->stateManager->getSignalManager()->sendSignal(ZL_EVENT_CONTENT_LOADED);
 }
 
 DirectoryItem* FileSystemDirectoryContent::generateDirectoryItem(char const* path, char const* filename)

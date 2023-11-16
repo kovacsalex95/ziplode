@@ -1,7 +1,8 @@
 #include "PathManager.h"
 
-PathManager::PathManager()
+PathManager::PathManager(SignalManager* signalManager)
 {
+    this->signalManager = signalManager;
     this->goToHome();
 }
 
@@ -12,6 +13,10 @@ string PathManager::getCurrentPath()
 
 void PathManager::setPath(string path)
 {
+    if (this->currentPath == path) {
+        return;
+    }
+
     this->currentPath = Util::normalizePath(path);
 }
 
@@ -43,8 +48,8 @@ string PathManager::goToPath(string path)
 
     this->setPath(path);
     this->forwardPaths.clear();
+    this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
 
-    this->updateToolbarIcons();
     return this->getCurrentPath();
 }
 
@@ -71,9 +76,9 @@ string PathManager::goBack()
         this->forwardPaths.insert(this->forwardPaths.begin(), this->getCurrentPath());
         this->setPath(this->backPaths[this->backPaths.size() - 1]);
         this->backPaths.pop_back();
+        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
     }
 
-    this->updateToolbarIcons();
     return this->getCurrentPath();
 }
 
@@ -83,9 +88,9 @@ string PathManager::goForward()
         this->backPaths.push_back(this->getCurrentPath());
         this->setPath(this->forwardPaths[0]);
         this->forwardPaths.erase(this->forwardPaths.begin());
+        this->signalManager->sendSignal(ZL_EVENT_PATH_CHANGED);
     }
 
-    this->updateToolbarIcons();
     return this->getCurrentPath();
 }
 
@@ -96,33 +101,4 @@ string PathManager::goUp()
     }
 
     return this->getCurrentPath();
-}
-
-void PathManager::setToolbarControl(wxToolBar* toolbar)
-{
-    this->toolbarControl = toolbar;
-}
-
-void PathManager::updateToolbarIcons()
-{
-    if (this->toolbarControl == nullptr) {
-        return;
-    }
-
-    std::cout << "Back: (" << this->backPaths.size() << ")" << std::endl;
-    for (int i = 0; i < this->backPaths.size(); i++) {
-        std::cout << "\t" << this->backPaths[i] << std::endl;
-    }
-
-    std::cout << "--------" << std::endl;
-
-    std::cout << "Forward: (" << this->forwardPaths.size() << ")" << std::endl;
-    for (int i = 0; i < this->forwardPaths.size(); i++) {
-        std::cout << "\t" << this->forwardPaths[i] << std::endl;
-    }
-
-    this->toolbarControl->EnableTool(ZL_ACTION_BACK, this->canGoBack());
-    this->toolbarControl->EnableTool(ZL_ACTION_UP, this->canGoUp());
-    this->toolbarControl->EnableTool(ZL_ACTION_FORWARD, this->canGoForward());
-    this->toolbarControl->EnableTool(ZL_ACTION_HOME, this->canGoHome());
 }

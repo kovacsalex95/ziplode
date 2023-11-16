@@ -1,9 +1,7 @@
 #include "FileList.h"
 
-FileList::FileList(StateManager* stateManager, wxFrame* frame)
+FileList::FileList(StateManager* stateManager, wxFrame* frame) : StateUser(stateManager)
 {
-    this->stateManager = stateManager;
-
     this->wxControl = new wxDataViewListCtrl(frame, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxDV_MULTIPLE | wxDV_ROW_LINES | wxDV_VERT_RULES);
 
     this->wxControl->AppendTextColumn("Name", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE)->SetMinWidth(200);
@@ -14,8 +12,7 @@ FileList::FileList(StateManager* stateManager, wxFrame* frame)
     this->wxControl->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &FileList::onItemDoubleClicked, this, wxID_ANY);
 
     content = new FileSystemDirectoryContent(stateManager);
-
-    this->loadPath();
+    content->load();
 }
 
 wxDataViewListCtrl* FileList::getControl()
@@ -25,7 +22,6 @@ wxDataViewListCtrl* FileList::getControl()
 
 void FileList::loadPath()
 {
-    content->load();
     vector<DirectoryItem*> items = content->getItems();
 
     this->wxControl->DeleteAllItems();
@@ -54,6 +50,19 @@ void FileList::addFile(DirectoryItem* newItem)
     this->wxControl->AppendItem(data);
 }
 
+void FileList::onSignalReceived(int signalID, Signal *signal)
+{
+    switch (signalID) {
+        case ZL_EVENT_PATH_CHANGED:
+            content->load();
+            break;
+
+        case ZL_EVENT_CONTENT_LOADED:
+            loadPath();
+            break;
+    }
+}
+
 void FileList::onItemDoubleClicked(wxDataViewEvent& event)
 {
     wxDataViewModel* itemData = event.GetModel();
@@ -73,7 +82,7 @@ void FileList::onItemDoubleClicked(wxDataViewEvent& event)
             this->stateManager->getPathManager()->goToSubFoler(filename);
         }
 
-        this->loadPath();
+        content->load();
     }
 
     // File

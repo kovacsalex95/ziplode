@@ -2,8 +2,8 @@
 // Created by Alex Flexi on 2023.11.09.
 //
 
-#ifndef ZIPLODE_RESOURCES_H
-#define ZIPLODE_RESOURCES_H
+#ifndef ZIPLODE_RESOURCEMANAGER_H
+#define ZIPLODE_RESOURCEMANAGER_H
 
 #include <map>
 #include <wx/wx.h>
@@ -16,9 +16,9 @@
 using std::string;
 using std::map;
 
-class Resources {
+class ResourceManager {
     public:
-        Resources();
+        ResourceManager();
         wxBitmapBundle iconOpen();
         wxBitmapBundle iconArchive();
         wxBitmapBundle iconHome();
@@ -32,4 +32,4 @@ class Resources {
 };
 
 
-#endif //ZIPLODE_RESOURCES_H
+#endif //ZIPLODE_RESOURCEMANAGER_H

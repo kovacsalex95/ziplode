@@ -3,23 +3,24 @@
 
 #include <wx/wx.h>
 
-#include "../Core/Resources.h"
 #include "../Core/ActionIDs.h"
+#include "../Core/StateUser.h"
 #include "../Core/StateManager.h"
 
 using std::string;
 
-class ToolBar {
+class ToolBar : public StateUser {
     public:
-        ToolBar(StateManager* stateManager, wxFrame* frame, Resources* resources);
+        ToolBar(StateManager* stateManager, wxFrame* frame);
         void updateToolsEnabled();
         void updateToolsIcons();
         wxToolBar* getControl();
 
     private:
-        StateManager* stateManager;
-        Resources* resources;
+        ResourceManager* resources;
         wxToolBar *wxControl;
+        void onSignalReceived(int signalID, Signal *signal);
+        bool onPathChanged(Signal* signal);
 };
 
 #endif //ZIPLODE_TOOLBAR_H

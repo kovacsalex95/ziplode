@@ -1,11 +1,11 @@
-#include "Resources.h"
+#include "ResourceManager.h"
 
-Resources::Resources()
+ResourceManager::ResourceManager()
 {
     wxInitAllImageHandlers();
 }
 
-wxBitmapBundle Resources::generateBitmap(const wxString& bitmapName)
+wxBitmapBundle ResourceManager::generateBitmap(const wxString& bitmapName)
 {
     string bitmapNameSuffix = AppInfo::appInDarkMode() ? "-bright" : "-dark";
     const wxString& bitmapNameThemed = wxString(bitmapName + bitmapNameSuffix);
@@ -28,32 +28,32 @@ wxBitmapBundle Resources::generateBitmap(const wxString& bitmapName)
     return generatedBitmapBundles[bitmapNameThemed];
 }
 
-wxBitmapBundle Resources::iconOpen()
+wxBitmapBundle ResourceManager::iconOpen()
 {
     return generateBitmap("folder-open-regular");
 }
 
-wxBitmapBundle Resources::iconArchive()
+wxBitmapBundle ResourceManager::iconArchive()
 {
     return generateBitmap("box-regular");
 }
 
-wxBitmapBundle Resources::iconHome()
+wxBitmapBundle ResourceManager::iconHome()
 {
     return generateBitmap("home-alt-regular");
 }
 
-wxBitmapBundle Resources::iconBack()
+wxBitmapBundle ResourceManager::iconBack()
 {
     return generateBitmap("arrow-back-regular");
 }
 
-wxBitmapBundle Resources::iconForward()
+wxBitmapBundle ResourceManager::iconForward()
 {
     return generateBitmap("right-arrow-alt-regular");
 }
 
-wxBitmapBundle Resources::iconUp()
+wxBitmapBundle ResourceManager::iconUp()
 {
     return generateBitmap("arrow-to-top-solid");
 }

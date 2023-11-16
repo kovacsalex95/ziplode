@@ -7,6 +7,8 @@
 #include <wx/wx.h>
 #include <wx/stdpaths.h>
 
+#include "SignalManager.h"
+#include "Signal.h"
 #include "Util.h"
 #include "ActionIDs.h"
 
@@ -15,7 +17,7 @@ using std::vector;
 
 class PathManager {
     public:
-        PathManager();
+        PathManager(SignalManager* signalManager);
         string getCurrentPath();
         bool canGoBack();
         bool canGoForward();
@@ -29,15 +31,14 @@ class PathManager {
         string goForward();
         string goUp();
         string getDefaultPath() const { return wxStandardPaths::Get().GetDocumentsDir().ToStdString(); }
-        void setToolbarControl(wxToolBar* toolbar);
         void updateToolbarIcons();
 
     private:
+        SignalManager* signalManager;
         string currentPath;
         vector<string> backPaths;
         vector<string> forwardPaths;
         void setPath(string path);
-        wxToolBar* toolbarControl = nullptr;
 };
 
 

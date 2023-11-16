@@ -14,22 +14,23 @@
 
 #include "../Core/FileSystemDirectoryContent.h"
 #include "../Core/Util.h"
+#include "../Core/StateUser.h"
 #include "../Core/StateManager.h"
 
 using std::string;
 using std::round;
 
-class FileList {
+class FileList : public StateUser {
     public:
         FileList(StateManager* stateManager, wxFrame* frame);
         void loadPath();
         wxDataViewListCtrl* getControl();
 
     private:
-        StateManager* stateManager;
         wxDataViewListCtrl *wxControl;
         DirectoryContent *content;
         void addFile(DirectoryItem* newItem);
+        void onSignalReceived(int signalID, Signal *signal);
         void onItemDoubleClicked(wxDataViewEvent& event);
 };
 

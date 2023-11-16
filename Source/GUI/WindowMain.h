@@ -9,7 +9,8 @@
 #include <fmt/format.h>
 
 #include "../Core/StateManager.h"
-#include "../Core/Resources.h"
+#include "../Core/StateUser.h"
+#include "../Core/ResourceManager.h"
 #include "MenuBar.h"
 #include "ToolBar.h"
 #include "StatusBar.h"
@@ -17,18 +18,17 @@
 
 using std::string;
 
-class WindowMain : public wxFrame
+class WindowMain : public wxFrame, public StateUser
 {
     public:
         WindowMain(StateManager* stateManager);
 
     private:
-        StateManager* stateManager;
         MenuBar *menuBar;
         ToolBar *toolBar;
         StatusBar *statusBar;
-        Resources *resources;
         FileList *fileList;
+        void onSignalReceived(int signalID, Signal *signal);
         void onOpen(wxCommandEvent& event);
         void onArchive(wxCommandEvent& event);
         void onHome(wxCommandEvent& event);

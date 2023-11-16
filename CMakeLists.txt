@@ -18,8 +18,8 @@ add_executable(ziplode Source/Main.cpp
         Source/Main.h
         Source/AppInfo.h
         Source/AppInfo.cpp
-        Source/Core/Resources.cpp
-        Source/Core/Resources.h
+        Source/Core/ResourceManager.cpp
+        Source/Core/ResourceManager.h
         Source/GUI/MenuBar.cpp
         Source/GUI/MenuBar.h
         Source/GUI/ToolBar.cpp
@@ -41,6 +41,12 @@ add_executable(ziplode Source/Main.cpp
         Source/Core/PathManager.h
         Source/Core/StateManager.cpp
         Source/Core/StateManager.h
+        Source/Core/SignalReceiver.h
+        Source/Core/Signal.h
+        Source/Core/SignalManager.cpp
+        Source/Core/SignalManager.h
+        Source/Core/StateUser.cpp
+        Source/Core/StateUser.h
 )
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})
