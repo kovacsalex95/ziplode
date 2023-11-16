@@ -29,6 +29,9 @@ class WindowMain : public wxFrame
         FileList *fileList;
         void onOpen(wxCommandEvent& event);
         void onArchive(wxCommandEvent& event);
+        void onHome(wxCommandEvent& event);
+        void onBack(wxCommandEvent& event);
+        void onUp(wxCommandEvent& event);
         void onExit(wxCommandEvent& event);
         void onAbout(wxCommandEvent& event);
         void onSystemColourChanged(wxSysColourChangedEvent &event);

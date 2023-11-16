@@ -21,6 +21,9 @@ class Resources {
         Resources();
         wxBitmapBundle iconOpen();
         wxBitmapBundle iconArchive();
+        wxBitmapBundle iconHome();
+        wxBitmapBundle iconBack();
+        wxBitmapBundle iconUp();
 
     private:
         map<wxString, wxBitmapBundle> generatedBitmapBundles;

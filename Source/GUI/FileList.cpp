@@ -29,22 +29,25 @@ void FileList::loadPath(string path)
     this->wxControl->DeleteAllItems();
 
     for (int i=0; i<items.size(); i++) {
-        int year = rand() % 20 + 2003;
-        int month = rand() % 12;
-        int day = rand() % 30;
 
-        this->addFile(items[i]->getName(),
-                      Util::getFormattedFilesize(items[i]->getSize(), 1),
-                      fmt::format("{}.{}.{}.", year, month, day));
+        this->addFile(items[i]);
     }
 }
 
-void FileList::addFile(string name, string size, string lastModified)
+void FileList::addFile(DirectoryItem* newItem)
 {
+    int year = rand() % 20 + 2003;
+    int month = rand() % 12;
+    int day = rand() % 30;
+
+    string fileSize = newItem->getType() == ZL_ITEM_TYPE_FOLDER
+                        ? "-"
+                        : Util::getFormattedFilesize(newItem->getSize(), 1);
+
     wxVector<wxVariant> data;
-    data.push_back(wxVariant(name));
-    data.push_back(wxVariant(size));
-    data.push_back(wxVariant(lastModified)); // TODO
+    data.push_back(wxVariant(newItem->getName()));
+    data.push_back(wxVariant(fileSize));
+    data.push_back(wxVariant(fmt::format("{}.{}.{}.", year, month, day))); // TODO
 
     this->wxControl->AppendItem(data);
 }

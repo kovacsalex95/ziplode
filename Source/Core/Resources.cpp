@@ -37,3 +37,18 @@ wxBitmapBundle Resources::iconArchive()
 {
     return generateBitmap("box-regular");
 }
+
+wxBitmapBundle Resources::iconHome()
+{
+    return generateBitmap("home-alt-regular");
+}
+
+wxBitmapBundle Resources::iconBack()
+{
+    return generateBitmap("arrow-back-regular");
+}
+
+wxBitmapBundle Resources::iconUp()
+{
+    return generateBitmap("arrow-to-top-solid");
+}

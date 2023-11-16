@@ -16,6 +16,7 @@
 #include "../Core/Util.h"
 
 using std::string;
+using std::round;
 
 class FileList {
     public:
@@ -27,7 +28,7 @@ class FileList {
         string currentPath;
         wxDataViewListCtrl *wxControl;
         DirectoryContent *content;
-        void addFile(string name, string size, string lastModified);
+        void addFile(DirectoryItem* newItem);
         void onItemDoubleClicked(wxDataViewEvent& event);
 };
 

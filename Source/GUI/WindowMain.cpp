@@ -14,6 +14,9 @@ WindowMain::WindowMain() : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion
 
     this->Bind(wxEVT_MENU, &WindowMain::onOpen, this, ZL_ACTION_OPEN);
     this->Bind(wxEVT_MENU, &WindowMain::onArchive, this, ZL_ACTION_ARCHIVE);
+    this->Bind(wxEVT_MENU, &WindowMain::onHome, this, ZL_ACTION_HOME);
+    this->Bind(wxEVT_MENU, &WindowMain::onBack, this, ZL_ACTION_BACK);
+    this->Bind(wxEVT_MENU, &WindowMain::onUp, this, ZL_ACTION_UP);
     this->Bind(wxEVT_MENU, &WindowMain::onAbout, this, wxID_ABOUT);
     this->Bind(wxEVT_MENU, &WindowMain::onExit, this, wxID_EXIT);
     this->Bind(wxEVT_SYS_COLOUR_CHANGED, wxSysColourChangedEventHandler(WindowMain::onSystemColourChanged), this);
@@ -27,6 +30,21 @@ void WindowMain::onOpen(wxCommandEvent& event)
 void WindowMain::onArchive(wxCommandEvent& event)
 {
     wxLogMessage("Archive files...");
+}
+
+void WindowMain::onHome(wxCommandEvent& event)
+{
+    fileList->loadPath(this->getDefaultPath());
+}
+
+void WindowMain::onBack(wxCommandEvent& event)
+{
+    wxLogMessage("Go back...");
+}
+
+void WindowMain::onUp(wxCommandEvent& event)
+{
+    wxLogMessage("Go up...");
 }
 
 void WindowMain::onAbout(wxCommandEvent& event)
