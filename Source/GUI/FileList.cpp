@@ -23,13 +23,11 @@ wxDataViewListCtrl* FileList::getControl()
 
 void FileList::loadPath()
 {
+    this->wxControl->DeleteAllItems();
     vector<DirectoryItem*> items = content->getItems();
 
-    this->wxControl->DeleteAllItems();
-
-    for (int i=0; i<items.size(); i++) {
-
-        this->addFile(items[i]);
+    for (DirectoryItem* item : items) {
+        this->addFile(item);
     }
 }
 
