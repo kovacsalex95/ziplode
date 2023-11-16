@@ -33,7 +33,9 @@ void FileList::loadPath(string path)
         int month = rand() % 12;
         int day = rand() % 30;
 
-        this->addFile(items[i]->getName(), items[i]->getFormattedSize(1), fmt::format("{}.{}.{}.", year, month, day));
+        this->addFile(items[i]->getName(),
+                      Util::getFormattedFilesize(items[i]->getSize(), 1),
+                      fmt::format("{}.{}.{}.", year, month, day));
     }
 }
 

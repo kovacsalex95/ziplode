@@ -36,7 +36,6 @@ class DirectoryItem {
         std::chrono::time_point<std::chrono::system_clock> getCreatedAt();
         std::chrono::time_point<std::chrono::system_clock> getModifiedAt();
         string getFormattedPath(bool useFolder = true, bool useExtension = true);
-        string getFormattedSize(int decimals = 3);
         string getFormattedCreatedAt(string format = "{:%Y-%m-%d}");
         string getFormattedModifiedAt(string format = "{:%Y-%m-%d}");
 

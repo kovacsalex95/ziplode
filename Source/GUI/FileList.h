@@ -13,6 +13,7 @@
 #include <fmt/format.h>
 
 #include "../Core/FileSystemDirectoryContent.h"
+#include "../Core/Util.h"
 
 using std::string;
 
