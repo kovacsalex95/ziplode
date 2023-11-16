@@ -1,6 +1,6 @@
 #include "MenuBar.h"
 
-MenuBar::MenuBar(wxFrame* frame)
+MenuBar::MenuBar(StateManager* stateManager, wxFrame* frame) : StateUser(stateManager)
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(ZL_ACTION_OPEN, "&Open...\tCtrl+O", "Open an archive file");
@@ -25,8 +25,17 @@ wxMenuBar* MenuBar::getControl()
     return wxControl;
 }
 
+void MenuBar::onSignalReceived(int signalID, Signal *signal)
+{
+    switch (signalID) {
+        case ZL_EVENT_SELECTION_CHANGED:
+            this->updateMenusEnabled();
+            break;
+    }
+}
+
 void MenuBar::updateMenusEnabled()
 {
     wxControl->Enable(ZL_ACTION_OPEN, true); // TODO
-    wxControl->Enable(ZL_ACTION_ARCHIVE, false); // TODO
+    wxControl->Enable(ZL_ACTION_ARCHIVE, this->stateManager->getSelectionManager()->hasSelection());
 }

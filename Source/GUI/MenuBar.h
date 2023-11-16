@@ -4,17 +4,20 @@
 #include <wx/wx.h>
 
 #include "../Enum/ActionIDs.h"
+#include "../State/StateManager.h"
+#include "../State/StateUser.h"
 
 using std::string;
 
-class MenuBar {
+class MenuBar : public StateUser {
     public:
-        MenuBar(wxFrame* frame);
+        MenuBar(StateManager* stateManager, wxFrame* frame);
         void updateMenusEnabled();
         wxMenuBar* getControl();
 
     private:
         wxMenuBar *wxControl;
+        void onSignalReceived(int signalID, Signal *signal);
 };
 
 

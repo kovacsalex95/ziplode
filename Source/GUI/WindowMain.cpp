@@ -2,7 +2,7 @@
 
 WindowMain::WindowMain(StateManager* stateManager) : wxFrame(nullptr, wxID_ANY, AppInfo::appNameAndVersion(), wxDefaultPosition, wxSize(1200, 800)), StateUser(stateManager)
 {
-    menuBar = new MenuBar(this);
+    menuBar = new MenuBar(this->stateManager, this);
     toolBar = new ToolBar(this->stateManager, this);
     statusBar = new StatusBar(this);
     fileList = new FileList(this->stateManager, this);
