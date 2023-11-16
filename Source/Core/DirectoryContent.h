@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "DirectoryItem.h"
+#include "StateManager.h"
 
 using std::string;
 using std::vector;
@@ -14,18 +15,18 @@ using std::vector;
 class DirectoryContent {
 
     public:
-        virtual void load(char const* path) = 0;
-        string getPath();
+        DirectoryContent(StateManager* stateManager);
+        virtual void load() = 0;
         const vector<DirectoryItem*>& getItems() const;
         unsigned long getItemCount();
 
     protected:
+        StateManager* stateManager;
         DirectoryItem* getItem(int index);
         void addItem(DirectoryItem* item);
         void removeItem(int index);
         void clearItems();
         void sortItems();
-        string path = "";
 
     private:
         vector<DirectoryItem*> items;

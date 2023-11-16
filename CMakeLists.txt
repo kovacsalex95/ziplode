@@ -37,6 +37,10 @@ add_executable(ziplode Source/Main.cpp
         Source/Core/FileSystemDirectoryContent.h
         Source/Core/Util.cpp
         Source/Core/Util.h
+        Source/Core/PathManager.cpp
+        Source/Core/PathManager.h
+        Source/Core/StateManager.cpp
+        Source/Core/StateManager.h
 )
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})

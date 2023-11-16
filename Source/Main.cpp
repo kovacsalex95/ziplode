@@ -1,8 +1,11 @@
 #include "Main.h"
+#include "Core/StateManager.h"
 
 bool ZiplodeApp::OnInit()
 {
-    WindowMain *frame = new WindowMain();
+    StateManager *stateManager = new StateManager();
+
+    WindowMain *frame = new WindowMain(stateManager);
     frame->Show();
     return true;
 }

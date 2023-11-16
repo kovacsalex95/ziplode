@@ -48,6 +48,11 @@ wxBitmapBundle Resources::iconBack()
     return generateBitmap("arrow-back-regular");
 }
 
+wxBitmapBundle Resources::iconForward()
+{
+    return generateBitmap("right-arrow-alt-regular");
+}
+
 wxBitmapBundle Resources::iconUp()
 {
     return generateBitmap("arrow-to-top-solid");

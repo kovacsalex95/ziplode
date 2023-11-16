@@ -1,7 +1,9 @@
 #include "FileList.h"
 
-FileList::FileList(wxFrame* frame)
+FileList::FileList(StateManager* stateManager, wxFrame* frame)
 {
+    this->stateManager = stateManager;
+
     this->wxControl = new wxDataViewListCtrl(frame, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxDV_MULTIPLE | wxDV_ROW_LINES | wxDV_VERT_RULES);
 
     this->wxControl->AppendTextColumn("Name", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE)->SetMinWidth(200);
@@ -11,7 +13,9 @@ FileList::FileList(wxFrame* frame)
     this->wxControl->SetContainingSizer(frame->GetSizer());
     this->wxControl->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &FileList::onItemDoubleClicked, this, wxID_ANY);
 
-    content = new FileSystemDirectoryContent();
+    content = new FileSystemDirectoryContent(stateManager);
+
+    this->loadPath();
 }
 
 wxDataViewListCtrl* FileList::getControl()
@@ -19,11 +23,9 @@ wxDataViewListCtrl* FileList::getControl()
     return this->wxControl;
 }
 
-void FileList::loadPath(string path)
+void FileList::loadPath()
 {
-    this->currentPath = path;
-
-    content->load(path.c_str());
+    content->load();
     vector<DirectoryItem*> items = content->getItems();
 
     this->wxControl->DeleteAllItems();
@@ -61,17 +63,22 @@ void FileList::onItemDoubleClicked(wxDataViewEvent& event)
     wxString filename = filenameVariant.GetString();
 
     // Folders
-    if (filename.EndsWith("/")) {
-        filename = filename.SubString(0, filename.length() - 1);
+    if (filename.EndsWith("/"))
+    {
+        if (filename == "../") {
+            this->stateManager->getPathManager()->goUp();
+        }
 
-        string newPath = fmt::format("{}/{}", this->currentPath, filename.ToStdString());
-        newPath = Util::normalizePath(newPath);
+        else {
+            this->stateManager->getPathManager()->goToSubFoler(filename);
+        }
 
-        this->loadPath(newPath);
+        this->loadPath();
     }
 
     // File
-    else {
+    else
+    {
         std::cout << "Opening file: " << filename << std::endl;
     }
 }

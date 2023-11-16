@@ -1,21 +1,19 @@
 #include "FileSystemDirectoryContent.h"
 
-void FileSystemDirectoryContent::load(char const* path)
+void FileSystemDirectoryContent::load()
 {
-    std::cout << "Reading directory: " << path << std::endl;
-    this->path = path;
+    string path = this->stateManager->getPathManager()->getCurrentPath();
 
     struct dirent *entry;
-    DIR *dir = opendir(path);
+    DIR *dir = opendir(path.c_str());
     if (dir == NULL) {
-        std::cout << "Directory is empty" << std::endl;
         return;
     }
 
     this->clearItems();
 
     while ((entry = readdir(dir)) != NULL) {
-        DirectoryItem* directoryItem = this->generateDirectoryItem(path, entry->d_name);
+        DirectoryItem* directoryItem = this->generateDirectoryItem(path.c_str(), entry->d_name);
 
         if (directoryItem != nullptr) {
             this->addItem(directoryItem);

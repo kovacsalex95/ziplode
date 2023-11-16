@@ -1,8 +1,8 @@
 #include "DirectoryContent.h"
 
-string DirectoryContent::getPath()
+DirectoryContent::DirectoryContent(StateManager* stateManager)
 {
-    return this->path;
+    this->stateManager = stateManager;
 }
 
 const std::vector<DirectoryItem*>& DirectoryContent::getItems() const {
@@ -29,7 +29,7 @@ void DirectoryContent::addItem(DirectoryItem* item)
         if (item->getName() == "./") {
             return;
         }
-        if (item->getName() == "../" && this->path == "/") {
+        if (item->getName() == "../" && !this->stateManager->getPathManager()->canGoUp()) {
             return;
         }
     }

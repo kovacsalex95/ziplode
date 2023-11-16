@@ -17,7 +17,8 @@ using namespace std::filesystem;
 
 class FileSystemDirectoryContent : public DirectoryContent {
     public:
-        void load(char const* path);
+        FileSystemDirectoryContent(StateManager* stateManager) : DirectoryContent(stateManager) {}
+        void load();
 
     private:
         long long getFileSize(char const* path);

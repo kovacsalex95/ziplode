@@ -14,18 +14,19 @@
 
 #include "../Core/FileSystemDirectoryContent.h"
 #include "../Core/Util.h"
+#include "../Core/StateManager.h"
 
 using std::string;
 using std::round;
 
 class FileList {
     public:
-        FileList(wxFrame* frame);
-        void loadPath(string path);
+        FileList(StateManager* stateManager, wxFrame* frame);
+        void loadPath();
         wxDataViewListCtrl* getControl();
 
     private:
-        string currentPath;
+        StateManager* stateManager;
         wxDataViewListCtrl *wxControl;
         DirectoryContent *content;
         void addFile(DirectoryItem* newItem);

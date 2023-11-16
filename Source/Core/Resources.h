@@ -23,6 +23,7 @@ class Resources {
         wxBitmapBundle iconArchive();
         wxBitmapBundle iconHome();
         wxBitmapBundle iconBack();
+        wxBitmapBundle iconForward();
         wxBitmapBundle iconUp();
 
     private:
