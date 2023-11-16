@@ -51,12 +51,18 @@ void DirectoryContent::clearItems()
     this->items.clear();
 }
 
-bool compareItems(DirectoryItem* i1, DirectoryItem* i2)
+bool compareItemsByType(DirectoryItem* i1, DirectoryItem* i2)
 {
-    return (i1->getType() < i2->getType());
+    return i1->getType() < i2->getType();
+}
+
+bool compareItemsByName(DirectoryItem* i1, DirectoryItem* i2)
+{
+    return i1->getName() < i2->getName();
 }
 
 void DirectoryContent::sortItems()
 {
-    sort(this->items.begin(), this->items.end(), compareItems);
+    sort(this->items.begin(), this->items.end(), compareItemsByName);
+    sort(this->items.begin(), this->items.end(), compareItemsByType);
 }
