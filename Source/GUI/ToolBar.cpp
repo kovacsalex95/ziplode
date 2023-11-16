@@ -27,6 +27,7 @@ void ToolBar::onSignalReceived(int signalID, Signal *signal)
 {
     switch (signalID) {
         case ZL_EVENT_PATH_CHANGED:
+        case ZL_EVENT_SELECTION_CHANGED:
             this->updateToolsEnabled();
             break;
     }
@@ -40,7 +41,7 @@ void ToolBar::updateToolsEnabled()
     wxControl->EnableTool(ZL_ACTION_HOME, this->stateManager->getPathManager()->canGoHome());
 
     wxControl->EnableTool(ZL_ACTION_OPEN, true); // TODO
-    wxControl->EnableTool(ZL_ACTION_ARCHIVE, false); // TODO
+    wxControl->EnableTool(ZL_ACTION_ARCHIVE, this->stateManager->getSelectionManager()->hasSelection());
 }
 
 void ToolBar::updateToolsIcons()

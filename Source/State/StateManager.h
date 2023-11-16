@@ -4,6 +4,7 @@
 #include "../Path/PathManager.h"
 #include "../Signal/SignalManager.h"
 #include "../Resource/ResourceManager.h"
+#include "../Selection/SelectionManager.h"
 
 class StateManager {
 public:
@@ -11,11 +12,13 @@ public:
     PathManager* getPathManager();
     SignalManager* getSignalManager();
     ResourceManager* getResourceManager();
+    SelectionManager* getSelectionManager();
 
 private:
     PathManager* pathManager;
     SignalManager* signalManager;
     ResourceManager* resourceManager;
+    SelectionManager* selectionManager;
 };
 
 

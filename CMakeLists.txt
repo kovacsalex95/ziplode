@@ -50,6 +50,8 @@ add_executable(ziplode Source/Main.cpp
         Source/Path/PathChangedSignal.cpp
         Source/Path/PathChangedSignal.h
         Source/Enum/Directions.h
+        Source/Selection/SelectionManager.cpp
+        Source/Selection/SelectionManager.h
 )
 
 target_link_libraries(ziplode ${wxWidgets_LIBRARIES})

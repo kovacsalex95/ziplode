@@ -30,7 +30,9 @@ class FileList : public StateUser {
         wxDataViewListCtrl *wxControl;
         DirectoryContent *content;
         void addFile(DirectoryItem* newItem);
+        vector<string> getSelectedPaths();
         void onSignalReceived(int signalID, Signal *signal);
+        void onItemSelectionChanged(wxDataViewEvent& event);
         void onItemDoubleClicked(wxDataViewEvent& event);
 };
 

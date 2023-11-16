@@ -9,6 +9,7 @@ FileList::FileList(StateManager* stateManager, wxFrame* frame) : StateUser(state
     this->wxControl->AppendTextColumn("Modified", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE);
 
     this->wxControl->SetContainingSizer(frame->GetSizer());
+    this->wxControl->Bind(wxEVT_DATAVIEW_SELECTION_CHANGED, &FileList::onItemSelectionChanged, this, wxID_ANY);
     this->wxControl->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &FileList::onItemDoubleClicked, this, wxID_ANY);
 
     content = new FileSystemDirectoryContent(stateManager);
@@ -51,12 +52,36 @@ void FileList::onSignalReceived(int signalID, Signal *signal)
     switch (signalID) {
         case ZL_EVENT_PATH_CHANGED:
             content->load();
+            this->stateManager->getSelectionManager()->clearSelection();
             break;
 
         case ZL_EVENT_CONTENT_LOADED:
             loadPath();
             break;
     }
+}
+
+vector<string> FileList::getSelectedPaths()
+{
+    vector<string> paths;
+    const vector<DirectoryItem*> items = content->getItems();
+
+    if (this->wxControl->GetItemCount() != items.size()) {
+        return paths;
+    }
+
+    for (int i = 0; i < items.size(); i++) {
+        if (this->wxControl->IsRowSelected(i)) {
+            paths.push_back(items[i]->getName());
+        }
+    }
+
+    return paths;
+}
+
+void FileList::onItemSelectionChanged(wxDataViewEvent& event)
+{
+    this->stateManager->getSelectionManager()->setSelection(this->getSelectedPaths());
 }
 
 void FileList::onItemDoubleClicked(wxDataViewEvent& event)
