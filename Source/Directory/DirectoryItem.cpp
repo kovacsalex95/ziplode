@@ -1,19 +1,19 @@
 #include "DirectoryItem.h"
 
+#include <utility>
+
 DirectoryItem::DirectoryItem(string name,
                              string extension,
                              string folder,
                              ZL_ITEM_TYPE type,
                              long long size,
-                             std::chrono::time_point<std::chrono::system_clock> createdAt,
-                             std::chrono::time_point<std::chrono::system_clock> modifiedAt)
+                             tm modifiedAt)
 {
-    this->name = name;
-    this->extension = extension;
-    this->folder = folder;
+    this->name = std::move(name);
+    this->extension = std::move(extension);
+    this->folder = std::move(folder);
     this->type = type;
     this->size = size;
-    this->createdAt = createdAt;
     this->modifiedAt = modifiedAt;
 }
 
@@ -42,17 +42,12 @@ long long DirectoryItem::getSize()
     return this->size;
 }
 
-std::chrono::time_point<std::chrono::system_clock> DirectoryItem::getCreatedAt()
-{
-    return this->createdAt;
-}
-
-std::chrono::time_point<std::chrono::system_clock> DirectoryItem::getModifiedAt()
+tm DirectoryItem::getModifiedAt()
 {
     return this->modifiedAt;
 }
 
-string DirectoryItem::getFormattedPath(bool useFolder, bool useExtension)
+string DirectoryItem::getPath(bool useFolder, bool useExtension)
 {
     string result = this->getName();
 
@@ -60,19 +55,9 @@ string DirectoryItem::getFormattedPath(bool useFolder, bool useExtension)
         result = folder + "/" + result;
     }
 
-    if (useExtension) {
+    if (this->getType() == ZL_ITEM_TYPE_FILE && useExtension) {
         result = result + "." + extension;
     }
 
     return result;
-}
-
-string DirectoryItem::getFormattedCreatedAt(string format)
-{
-    return "";
-}
-
-string DirectoryItem::getFormattedModifiedAt(string format)
-{
-    return "";
 }

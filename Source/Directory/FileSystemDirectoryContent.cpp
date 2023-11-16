@@ -46,6 +46,9 @@ DirectoryItem* FileSystemDirectoryContent::generateDirectoryItem(char const* pat
     long long itemSize = fileInfo.st_size;
     string filenameSuffix = itemType == ZL_ITEM_TYPE_FOLDER ? "/" : "";
 
-    DirectoryItem* item = new DirectoryItem(filename + filenameSuffix, "", path, itemType, itemSize, std::chrono::system_clock::now(), std::chrono::system_clock::now());
+    // TODO: created at(?)
+    struct tm modifiedAt = *localtime(&fileInfo.st_mtime);
+
+    DirectoryItem* item = new DirectoryItem(filename + filenameSuffix, "", path, itemType, itemSize, modifiedAt);
     return item;
 }

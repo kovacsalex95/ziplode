@@ -6,7 +6,7 @@ FileList::FileList(StateManager* stateManager, wxFrame* frame) : StateUser(state
 
     this->wxControl->AppendTextColumn("Name", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE)->SetMinWidth(200);
     this->wxControl->AppendTextColumn("Size", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE);
-    this->wxControl->AppendTextColumn("Last modified", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE);
+    this->wxControl->AppendTextColumn("Modified", wxDATAVIEW_CELL_INERT, wxCOL_WIDTH_AUTOSIZE);
 
     this->wxControl->SetContainingSizer(frame->GetSizer());
     this->wxControl->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &FileList::onItemDoubleClicked, this, wxID_ANY);
@@ -34,10 +34,6 @@ void FileList::loadPath()
 
 void FileList::addFile(DirectoryItem* newItem)
 {
-    int year = rand() % 20 + 2003;
-    int month = rand() % 12;
-    int day = rand() % 30;
-
     string fileSize = newItem->getType() == ZL_ITEM_TYPE_FOLDER
                         ? "-"
                         : Util::getFormattedFilesize(newItem->getSize(), 1);
@@ -45,7 +41,7 @@ void FileList::addFile(DirectoryItem* newItem)
     wxVector<wxVariant> data;
     data.push_back(wxVariant(newItem->getName()));
     data.push_back(wxVariant(fileSize));
-    data.push_back(wxVariant(fmt::format("{}.{}.{}.", year, month, day))); // TODO
+    data.push_back(wxVariant(Util::getFormattedDateTime(newItem->getModifiedAt())));
 
     this->wxControl->AppendItem(data);
 }
